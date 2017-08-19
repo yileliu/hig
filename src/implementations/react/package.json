@@ -1,9 +1,8 @@
 {
-  "name": "@hig/react-hig",
+  "name": "hig-react",
   "version": "1.0.3",
   "description": "hig components in react",
   "main": "lib/react-hig.js",
-  "css": "lib/react-hig.css",
   "author": "Autodesk Inc.",
   "homepage": ".",
   "license": "Apache-2.0",
