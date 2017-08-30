@@ -42,10 +42,11 @@
     "webpack": "^3.5.5"
   },
   "scripts": {
-    "build": "npm run build-vanilla && NODE_ENV=production webpack -p",
+    "build": "npm run build-vanilla && npm run build-react",
     "build-playground": "react-scripts build",
     "build-storybook": "build-storybook -s public -o build/storybook",
     "build-vanilla": "cd ../vanilla && npm run build && cd ../react && mkdir -p lib && cp ../vanilla/dist/hig.css lib/react-hig.css",
+    "build-react": "NODE_ENV=production webpack -p",
     "playground": "react-scripts start",
     "storybook": "start-storybook -p 9009 -s public",
     "start": "concurrently 'npm run start-vanilla' 'webpack --watch' --kill-others",
@@ -55,6 +56,7 @@
     "type-check": "tsc",
     "deploy-storybook": "npm run build-storybook && surge build/storybook",
     "deploy-playground": "react-scripts build && surge build",
+    "webpack": "webpack",    
     "postinstall": "cd ../vanilla && npm install"
   },
   "dependencies": {

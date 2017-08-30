@@ -27,7 +27,7 @@ export default class HIGNodeList {
       throw new Error(`unknown type ${instance}`);
     }
 
-    var constructorName = instance.constructor.name;
+    var constructorName = instance.constructor['name'];
     var onAdd = this.listItems[constructorName].onAdd;
 
     // Update the model
@@ -94,7 +94,7 @@ export default class HIGNodeList {
 
   componentDidMount() {
     this.nodes.forEach(node => {
-      const onAdd = this.listItems[node.constructor.name].onAdd;
+      const onAdd = this.listItems[node.constructor['name']].onAdd;
       onAdd(node.hig);
       node.mount();
     });
@@ -103,14 +103,19 @@ export default class HIGNodeList {
   }
 
   createElement(ElementConstructor, props) {
-    var type = this.listItems[ElementConstructor.name].type;
-    var constructor = this.listItems[ElementConstructor.name].HIGConstructor;
-
-    if (type) {
-      return new type(constructor, props);
-    } else {
-      throw new Error(`Unknown type ${ElementConstructor.name}`);
+    if(this.listItems[ElementConstructor['name']]){
+      var type = this.listItems[ElementConstructor['name']].type;
+      var constructor = this.listItems[ElementConstructor['name']].HIGConstructor;
+  
+      if (type) {
+        return new type(constructor, props);
+      } else {
+        throw new Error(`Unknown type ${ElementConstructor['name']}`);
+      }
+    }else{
+      throw new Error(`Unknown element`);
     }
+    
   }
 
   get length() {

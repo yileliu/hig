@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 import GlobalNavAdapter from '../../../adapters/GlobalNav/GlobalNavAdapter';
 import TopNavAdapter from '../../../adapters/GlobalNav/TopNav/TopNavAdapter';
