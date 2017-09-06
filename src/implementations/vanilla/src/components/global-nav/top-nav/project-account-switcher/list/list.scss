@@ -1,0 +1,18 @@
+@import '~basics/colors/colors.scss';
+
+.hig__global-nav__top-nav__project-account-switcher__list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  & .hig__global-nav__top-nav__project-account-switcher__item{
+    padding-top: 8px;
+  }
+
+  &__title{
+    font-size: 11px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: color(hig-gray-20);
+  }
+}
+   

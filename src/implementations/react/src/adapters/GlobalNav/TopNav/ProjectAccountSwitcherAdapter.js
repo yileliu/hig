@@ -3,39 +3,32 @@ import HIGElement from "../../../elements/HIGElement";
 import HIGNodeList from "../../../elements/HIGNodeList";
 import HIGChildValidator from "../../../elements/HIGChildValidator";
 import createComponent from "../../createComponent";
-import AccountComponent, { AccountAdapter } from "./AccountAdapter";
-import ProjectComponent, { ProjectAdapter } from "./ProjectAdapter";
-import Project from "../../../elements/components/GlobalNav/TopNav/Project";
-import Account from "../../../elements/components/GlobalNav/TopNav/Account";
+// import AccountComponent, { AccountAdapter } from "./AccountAdapter";
+// import ProjectComponent, { ProjectAdapter } from "./ProjectAdapter";
+// import Project from "../../../elements/components/GlobalNav/TopNav/Project";
+// import Account from "../../../elements/components/GlobalNav/TopNav/Account";
+
+import ListComponent, { ListAdapter } from "./ListAdapter";
 
 export class ProjectAccountSwitcherAdapter extends HIGElement {
   constructor(HIGConstructor, initialProps) {
     super(HIGConstructor, initialProps);
 
-    this.accounts = new HIGNodeList({
-      AccountAdapter: {
-        type: AccountAdapter,
-        HIGConstructor: this.hig.partials.Account,
+    this.lists = new HIGNodeList({
+      ListAdapter: {
+        type: ListAdapter,
+        HIGConstructor: this.hig.partials.List,
         onAdd: (instance, beforeInstance) => {
-          this.hig.addAccount(instance, beforeInstance);
+          this.hig.addList(instance, beforeInstance);
         }
       }
     });
 
-    this.projects = new HIGNodeList({
-      ProjectAdapter: {
-        type: ProjectAdapter,
-        HIGConstructor: this.hig.partials.Project,
-        onAdd: (instance, beforeInstance) => {
-          this.hig.addProject(instance, beforeInstance);
-        }
-      }
-    });
+    
   }
 
   componentDidMount() {
-    this.accounts.componentDidMount();
-    this.projects.componentDidMount();
+    this.lists.componentDidMount();
 
     if (this.initialProps.open === true) {
       this.hig.open();
@@ -118,26 +111,11 @@ export class ProjectAccountSwitcherAdapter extends HIGElement {
   }
 
   createElement(ElementConstructor, props) {
-    switch (ElementConstructor) {
-      case ProjectAdapter:
-        return this.projects.createElement(ElementConstructor, props);
-      case AccountAdapter:
-        return this.accounts.createElement(ElementConstructor, props);
-      default:
-        throw new Error(`Unknown type ${ElementConstructor.name}`);
-    }
+    return this.lists.createElement(ElementConstructor, props);
   }
 
   insertBefore(instance, beforeChild = {}) {
-    if (instance instanceof AccountAdapter) {
-      this.accounts.insertBefore(instance);
-    } else if (instance instanceof ProjectAdapter) {
-      this.projects.insertBefore(instance);
-    } else {
-      throw new Error(
-        `${this.constructor.name} cannot have a child of type ${instance.constructor.name}`
-      );
-    }
+    this.lists.insertBefore(instance, beforeChild);
   }
 }
 
@@ -156,10 +134,7 @@ ProjectAccountSwitcherComponent.propTypes = {
   activeImage: PropTypes.string,
   activeType: PropTypes.string,
   children: HIGChildValidator([
-    Account,
-    Project,
-    AccountComponent,
-    ProjectComponent
+    ListAdapter
   ])
 };
 
@@ -191,8 +166,5 @@ ProjectAccountSwitcherComponent.__docgenInfo = {
     }
   }
 };
-
-ProjectAccountSwitcherComponent.Account = AccountComponent;
-ProjectAccountSwitcherComponent.Project = ProjectComponent;
 
 export default ProjectAccountSwitcherComponent;

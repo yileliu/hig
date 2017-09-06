@@ -24,7 +24,7 @@ class Item extends Core {
     }
 
     _componentDidMount() {
-        this._setType(this.options._type);
+        this.setType(this.options.type);
     }
 
     setImage(imageUrl) {
@@ -48,7 +48,7 @@ class Item extends Core {
             .innerText = initials(label);
     }
 
-    _setType(type) {
+    setType(type) {
         if (!TYPES.includes(type)) { return }
 
         TYPES.forEach((t) => {
@@ -56,16 +56,6 @@ class Item extends Core {
         });
 
         this.el.classList.add(`hig__global-nav__top-nav__project-account-switcher__item--${type}`);
-    }
-
-    setProjectSectionTitle(title){
-        const firstProjectItem = this._findDOMEl(".hig__global-nav__top-nav__project-account-switcher__item--project.hig__global-nav__top-nav__project-account-switcher__item--active:first-child");
-       firstProjectItem.dataset.projectSectionTitle = title;
-    }
-
-    setAccountSectionTitle(title){
-        const firstAccountItem = this._findDOMEl(".hig__global-nav__top-nav__project-account-switcher__item--account.hig__global-nav__top-nav__project-account-switcher__item--active:first-child");
-        firstAccountItem.dataset.accountSectionTitle = title;
     }
 
     activate() {
@@ -82,10 +72,11 @@ class Item extends Core {
 
 }
 
-Item._interface = Interface['components']['GlobalNav']['partials']['TopNav']['partials']['ProjectAccountSwitcher']['partials']['Project'];
+Item._interface = Interface['components']['GlobalNav']['partials']['TopNav']['partials']['ProjectAccountSwitcher']['partials']['List']['partials']['Item'];
 Item._defaults = {
     label: '',
-    image: ''
+    image: '',
+    type: 'project'
 };
 Item._partials = {};
 

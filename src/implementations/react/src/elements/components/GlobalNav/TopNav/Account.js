@@ -6,7 +6,8 @@ import AccountAdapter from '../../../../adapters/GlobalNav/TopNav/AccountAdapter
 class Account extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string,
+    onClick: PropTypes.func.isRequired
   }
 
   handleClick = () => {
@@ -14,7 +15,7 @@ class Account extends Component {
   }
 
   render() {
-    const { id, onClick, ...otherProps } = this.props;
+    const { id, title, onClick, ...otherProps } = this.props;
     return (<AccountAdapter onClick={this.handleClick} {...otherProps} />);
   }
 }

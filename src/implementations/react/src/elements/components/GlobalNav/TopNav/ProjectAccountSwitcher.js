@@ -40,16 +40,12 @@ class ProjectAccountSwitcher extends Component {
 
   handleProjectClick = (id) => {
     this.setState({ activeProjectId: id });
-    if (this.props.onProjectClick) {
-      this.props.onProjectClick(id);
-    }
+    this.props.onProjectClick(id);
   }
 
   handleAccountClick = (id) => {
     this.setState({ activeAccountId: id });
-    if (this.props.onAccountClick) {
-      this.props.onAccountClick(id);
-    }
+    this.props.onAccountClick(id);
   }
 
   activeProps() {

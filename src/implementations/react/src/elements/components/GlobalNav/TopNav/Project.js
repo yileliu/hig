@@ -6,7 +6,8 @@ import ProjectAdapter from '../../../../adapters/GlobalNav/TopNav/ProjectAdapter
 class Project extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string,
+    onClick: PropTypes.func.isRequired
   }
 
   handleClick = () => {
@@ -14,7 +15,7 @@ class Project extends Component {
   }
 
   render() {
-    const { id, onClick, ...otherProps } = this.props;
+    const { id, title, onClick, ...otherProps } = this.props;
     return (<ProjectAdapter onClick={this.handleClick} {...otherProps} />);
   }
 }

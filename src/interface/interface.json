@@ -1425,18 +1425,11 @@
                 "activeType": "{String} ['account' or 'project']"
               },
               "methods": {
-                "addAccount": {
-                  "desc": "Pass in an instance of a ProjectAccountSwitcher Account",
+                "addList": {
+                  "desc": "Pass in an instance of a ProjectAccountSwitcher List",
                   "params": [
-                    "{Account} [ReferenceAccount]",
-                    "{Account} [ReferenceAccount] - (Optional) reference node for insertBefore"
-                  ]
-                },
-                "addProject": {
-                  "desc": "Pass in an instance of a ProjectAccountSwitcher Project",
-                  "params": [
-                    "{Project} [ReferenceProject]",
-                    "{Project} [ReferenceProject] - (Optional) reference node for insertBefore"
+                    "{List} [ReferenceList]",
+                    "{List} [ReferenceList] - (Optional) reference node for insertBefore"
                   ]
                 },
                 "close": {
@@ -1481,67 +1474,57 @@
                 }
               },
               "partials": {
-                "Account": {
+                "List": {
                   "defaults": {
-                    "image": "{String} - url of the account image",
-                    "label": "{String} - label of the account"
+                    "title": "{String} title of our list"
                   },
                   "methods": {
-                    "activate": {
-                      "desc": "activates the account"
-                    },
-                    "deactivate": {
-                      "desc": "deactivates the account"
-                    },
-                    "onClick": {
-                      "desc": "Calls the provided callback when user clicks on the account",
-                      "params": "HIG.abstract.EventObject.params",
-                      "returns": "HIG.abstract.EventObject.returns"
-                    },
-                    "setImage": {},
-                    "setLabel": {
-                      "desc": "sets the label",
+                    "addItem": {
+                      "desc": "Pass in an instance of a ProjectAccountSwitcher Item",
                       "params": [
-                        "{String} label - new label"
+                        "{Item} [ReferenceItem]",
+                        "{Item} [ReferenceItem] - (Optional) reference node for insertBefore"
                       ]
                     }
-                  }
-                },
-                "Project": {
-                  "defaults": {
-                    "image": "{String} - url of the project image",
-                    "label": "{String} - label of the project"
                   },
-                  "methods": {
-                    "activate": {
-                      "desc": "activates the project"
-                    },
-                    "deactivate": {
-                      "desc": "deactivates the project"
-                    },
-                    "onClick": {
-                      "desc": "Calls the provided callback when user clicks on the project",
-                      "params": "HIG.abstract.EventObject.params",
-                      "returns": "HIG.abstract.EventObject.returns"
-                    },
-                    "setImage": {},
-                    "setLabel": {
-                      "desc": "sets the label",
-                      "params": [
-                        "{String} label - new label"
-                      ]
-                    },
-                    "setProjectSectionTitle": {
-                      "desc": "sets section title for Projects section",
-                      "params": [
-                        "{String} title for projects section"
-                      ]
-                    },
-                    "setAccountSectionTitle": {
-                      "desc": "sets section title for Accounts section",
-                      "params": [
-                        "{String} title for accounts section"
-                      ]
+                  "partials": {
+                    "Item": {
+                      "defaults": {
+                        "image": "{String} - url of the image",
+                        "label": "{String} - label",
+                        "type": "{String} - either 'project' or 'account', defaults to 'project'"
+                      },
+                      "methods": {
+                        "activate": {
+                          "desc": "activates the account"
+                        },
+                        "deactivate": {
+                          "desc": "deactivates the account"
+                        },
+                        "onClick": {
+                          "desc": "Calls the provided callback when user clicks on the account",
+                          "params": "HIG.abstract.EventObject.params",
+                          "returns": "HIG.abstract.EventObject.returns"
+                        },
+                        "setImage": {
+                          "desc": "sets the image",
+                          "params": [
+                            "{String} url of the image"
+                          ]
+                        },
+                        "setType": {
+                          "desc": "sets the label",
+                          "params": [
+                            "{String} either 'project' or 'account'"
+                          ]
+                        },
+                        "setLabel": {
+                          "desc": "sets the label",
+                          "params": [
+                            "{String} label - new label"
+                          ]
+                        }
+                      }
                     }
                   }
                 }

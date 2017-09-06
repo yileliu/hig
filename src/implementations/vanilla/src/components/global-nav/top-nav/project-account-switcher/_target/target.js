@@ -4,7 +4,7 @@ var Template = require('./target.html');
 var Interface = require('interface.json');
 var Core = require('_core.js');
 
-var Item = require('../_item/item.js');
+var Item = require('../item/item.js');
 
 /**
  * Creates an Target

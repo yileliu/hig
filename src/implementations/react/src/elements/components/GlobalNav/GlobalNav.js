@@ -109,7 +109,9 @@ class GlobalNav extends Component {
               projectSectionTitle={this.props.projectSectionTitle}
               activeProjectId={this.props.activeProjectId}
               activeAccountId={this.props.activeAccountId}
-            />
+              onProjectClick={this.props.onProjectClick}
+              onAccountClick={this.props.onAccountClick}
+              />
           : null}
         </TopNavAdapter>
         <SideNav
