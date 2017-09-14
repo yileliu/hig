@@ -41,6 +41,7 @@ import TableSection from "./sections/TableSection";
 import TextLinkSection from "./sections/TextLinkSection";
 import FlyoutSection from "./sections/FlyoutSection"
 import RichTextSection from "./sections/RichTextSection";
+import IconSection from "./sections/IconSection";
 
 class Playground extends React.Component {
   constructor(props) {
@@ -119,6 +120,7 @@ class Playground extends React.Component {
         <TextLinkSection/>
         <FlyoutSection />
         <RichTextSection />
+        <IconSection />
       </GlobalNav>
     );
   }
