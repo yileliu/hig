@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import PlaygroundSection from "../../playground/PlaygroundSection";
-import Checkbox from "../../adapters/FormElements/CheckboxAdapter";
 import TableAdapter from "../../adapters/TableAdapter";
 import SlotCell from "./SlotCell";
+
+import TableHeadComponent from "../../adapters/TableHeadAdapter";
+import TableRowComponent from "../../adapters/TableRowAdapter";
+
+import HIGChildValidator from "../../elements/HIGChildValidator";
 
 const TableHead = TableAdapter.TableHead;
 const TableRow = TableAdapter.TableRow;
 const TextHeadCell = TableAdapter.TableHead.TextHeadCell;
 const TextCell = TableAdapter.TableRow.TextCell;
-const IconCell = TableAdapter.TableRow.IconCell;
 
 class Table extends Component {
   constructor(props) {
@@ -48,12 +50,18 @@ class Table extends Component {
   }
 }
 
+Table.propTypes = {
+  density: PropTypes.string,
+  columns: PropTypes.array,
+  data: PropTypes.array,
+  children: HIGChildValidator([TableHeadComponent, TableRowComponent])
+}
+
 Table.__docgenInfo = {
   props: {
     density: {
       description: "sets the size of the table"
     },
-
     columns: {
       description: "provides content for header cells"
     },
