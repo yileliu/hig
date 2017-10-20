@@ -10,27 +10,8 @@ import logo from "./images/bim-logo.png";
 import { projects, accounts } from "./fixtures/topNavFixtures";
 import { modules, submodules, links } from "./fixtures/sideNavFixtures";
 
-import AvatarSection from "./sections/AvatarSection";
-import ButtonSection from "./sections/ButtonSection";
-import CheckboxSection from "./sections/CheckboxSection";
-import DropdownSection from "./sections/DropdownSection";
-import FlyoutSection from "./sections/FlyoutSection";
-import GridSection from "./sections/GridSection";
-import IconSection from "./sections/IconSection";
-import IconButtonSection from "./sections/IconButtonSection";
-import ModalSection from "./sections/ModalSection";
-import PasswordFieldSection from "./sections/PasswordFieldSection";
-import SpacerSection from "./sections/SpacerSection";
-import RadioButtonSection from "./sections/RadioButtonSection";
-import RangeSection from "./sections/RangeSection";
-import RichTextSection from "./sections/RichTextSection";
-import SelectableTableSection from "./sections/SelectableTableSection";
-import TableSection from "./sections/TableSection";
-import TextAreaSection from "./sections/TextAreaSection";
-import TextFieldSection from "./sections/TextFieldSection";
-import TextLinkSection from "./sections/TextLinkSection";
-import TooltipSection from "./sections/TooltipSection";
-import TypographySection from "./sections/TypographySection";
+import NumberField from "./NumberField";
+import FormattedNumberField from "./FormattedNumberField";
 
 class Playground extends React.Component {
   constructor(props) {
@@ -174,27 +155,14 @@ class Playground extends React.Component {
         isSideNavOpen={this.state.isSideNavOpen}
         onHamburgerClick={this.toggleSideNav}
       >
-        <ButtonSection />
-        <IconButtonSection />
-        <CheckboxSection />
-        <PasswordFieldSection />
-        <RadioButtonSection />
-        <RangeSection />
-        <SpacerSection />
-        <TextFieldSection />
-        <TextAreaSection />
-        <ModalSection />
-        <DropdownSection />
-        <TypographySection />
-        <TableSection />
-        <TextLinkSection />
-        <FlyoutSection />
-        <TooltipSection />
-        <RichTextSection />
-        <AvatarSection />
-        <GridSection />
-        <IconSection />
-        <SelectableTableSection />
+        <NumberField
+          label="Number"
+          instructions="Number characters only, if you please"
+        />
+        <FormattedNumberField
+          label="Number"
+          instructions="Number characters only, if you please"
+        />
       </GlobalNav>
     );
   }
