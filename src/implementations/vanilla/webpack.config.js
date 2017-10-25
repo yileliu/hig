@@ -18,7 +18,7 @@ const r = {
         presets: [
           'es2015'
         ],
-        plugins: [],
+        plugins: ['transform-object-rest-spread'],
         babelrc: false,
         compact: false
       },

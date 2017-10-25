@@ -1,3 +1,5 @@
+require('./helpers/js/polyfills.js');
+
 const Hig = {};
 
 Hig.Avatar = require('./components/avatar/avatar.js');
