@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GlobalNav as VanillaGlobalNav } from "hig-vanilla";
+import { ActionBarSearch as ActionBarSearchVanilla } from "hig-vanilla";
 import HIGAdapter, {
   MapsPropToMethod,
   MapsEventListener,
@@ -8,11 +8,11 @@ import HIGAdapter, {
   ControlsProp
 } from "../../HIGAdapter";
 
-function SearchAdapter(props) {
+function ActionBarSearchAdapter(props) {
   return (
     <HIGAdapter
       displayName="Search"
-      HIGConstructor={VanillaGlobalNav._partials.SideNav._partials.Search}
+      HIGConstructor={ActionBarSearchVanilla}
       {...props}
     >
       {adapterProps => (
@@ -48,7 +48,6 @@ function SearchAdapter(props) {
             handler={props.onFocus}
             {...adapterProps}
           />
-          
           <MapsEventListener
             listener="onClearIconClick"
             handler={props.onClearIconClick}
@@ -61,7 +60,7 @@ function SearchAdapter(props) {
   );
 }
 
-SearchAdapter.propTypes = {
+ActionBarSearchAdapter.propTypes = {
   onInput: PropTypes.func,
   clearIconVisible: PropTypes.bool,
   onBlur: PropTypes.func,
@@ -72,7 +71,7 @@ SearchAdapter.propTypes = {
   onClearIconClick: PropTypes.func
 };
 
-SearchAdapter.defaultProps = {
+ActionBarSearchAdapter.defaultProps = {
   onInput: undefined,
   clearIconVisible: undefined,
   onBlur: undefined,
@@ -83,4 +82,4 @@ SearchAdapter.defaultProps = {
   onClearIconClick: undefined
 };
 
-export default SearchAdapter;
+export default ActionBarSearchAdapter;
